@@ -1,0 +1,501 @@
+<!doctype html>
+<html>
+	<head>
+		<title>ng-coastal</title>
+
+		<!-- meta -->
+		<meta charset="utf-8">
+
+		<!-- css -->
+		<link rel="stylesheet" href="reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="reveal.js/css/theme/default.css">
+		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+		<style>
+			.slides section img {
+				background: transparent;
+				border: none;
+				box-shadow: none;
+			}
+
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				text-transform: capitalize !important;
+			}
+
+			.reveal>.backgrounds{
+opacity:.4;
+}
+		</style>
+
+		<!--[if lt IE 9]>
+			<script src="reveal.js/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background="http://www.chapterthree.com/sites/default/files/legacy/retro-dude.png">
+					<h1 style="color: #00bcd4;">ng-coastal</h1>
+					<h3 class="fragment" style="color: #00bcd4;">The Future of Coastal.ca.gov?</h3>
+
+					<br><br><br><br><br><br><br><br><br><br><br><br>
+					<p class="fragment" style="color: #00bcd4;">
+						<small>by Zachariah Moreno</small>
+					</p>
+				</section>
+
+				<section>
+					<section data-background="https://openlab.citytech.cuny.edu/belli-sp2014-eng2000/files/2014/02/city-of-the-future-hd-wallpaper.jpg">
+						<h1 style="color:#72d572">What do we want
+						<br>for the future of
+						<br>Coastal.ca.gov?</h1>
+					</section>
+
+					<section>
+						<h2>Here's My Wishlist</h2>
+						<ol>
+							<li>Modular Organization</li>
+							<li>Ease of Maintenance</li>
+							<li>Data Driven Dynamic Content</li>
+							<li>Extensibility</li>
+							<li>High Performance</li>
+						</ol>
+					</section>
+				</section>
+
+				<section>
+					<section data-background="http://dtcurrents.com/wp-content/uploads/2014/04/have-cake-n-eat-it-too-2.jpg">
+						<h1 style="color: #d81b60">How can we
+						<br>have our cake
+						<br>&amp; eat it too?</h1>
+					</section>
+
+					<section>
+						<h1>AngularJS</h1>
+						<img src="http://www.opensourceconnections.com/blog/wp-content/uploads/2013/08/angularjs.png"/>
+						<p>
+							<small>By Google</small>
+						</p>
+					</section>
+
+					<section>
+						<h4>Vanilla HTML is great ...</h4>
+						<h2 class="fragment">@ making static linked documents</h2>
+
+						<br>
+
+						<h4 class="fragment">but it fails on dynamic content</h4>
+
+						<br>
+
+						<h1 class="fragment" style="color: #c41411">AngularJS extends HTML</h1>
+						<h2 class="fragment">to facilitate dynamic content</h2>
+					</section>
+
+					<section>
+						<h1>But how?!?</h1>
+
+						<ol>
+							<li class="fragment">It allows for <strong style="color:#1de9b6">declarative</strong> syntax via HTML attributes</li>
+							<li class="fragment">Everything is a <strong style="color: #9c27b0">module</strong>...the app is a module, each page is a module...modules depend on other modules</li>
+							<li class="fragment">Every request is an AJAX call == <strong style="color:#eeff41">speed &amp; bandwidth savings</strong></li>
+							<li class="fragment">Its easy to get <strong style="color: #b0120a">data</strong> from a database onto the page...then filter it, search it, interact with it, etc.</li>
+						</ol>
+					</section>
+				</section>
+
+				<section>
+					<section data-background="http://urbanfragment.files.wordpress.com/2013/02/buchla-modular-synthesizer.jpg">
+						<h2 style="color:#1de9b6;">Ng-Coastal</h2>
+						<h1 style="color:#1de9b6;">#1 Modular Organization</h1>
+					</section>
+
+					<section>
+						<h2>How are things organized?</h2>
+						<h1 class="fragment">MVC</h1>
+
+						<p class="fragment"><strong>M</strong> => Model => Data</p>
+						<p class="fragment"><strong>V</strong> => View => Pages</p>
+						<p class="fragment"><strong>C</strong> => Controller => Logic</p>
+
+						<br><br><br>
+
+						<p class="fragment">separation of concerns</p>
+					</section>
+
+					<section>
+						<p>A standard way to organize a complex codebase</p>
+
+						<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/MVC-Process.svg/2000px-MVC-Process.svg.png" style="width: 60%;">
+					</section>
+
+					<section>
+						<h2><small>That's nice,</small>
+						<br>but how does MVC help
+						<br>organize our real code?</h2>
+					</section>
+
+					<section>
+						<h2>File/Folder Structure</h2>
+						<pre><code>
+ng-coastal/
+--- index.html
+--- coastal.js
+--- coastal.css
+--- pages/
+------ home/
+--------- home.html
+--------- home.js
+--- images/
+------ all images
+--- components/
+------ angularjs/
+------ all 3rd-party additions
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Does a visitor navigate to
+						<br>coastal.ca.gov/pages/home/home.html?</h3>
+						<h1 class="fragment">NO!</h1>
+						<p class="fragment">that's where <strong>Routes</strong> come in</p>
+					</section>
+
+					<section>
+						<h2>What are <strong>ROUTES</strong>?</h2>
+
+						<ol>
+							<li class="fragment">A visitor navigates to a page, by using a link to a route/URL</li>
+							<li class="fragment">Angular observes the route/URL change</li>
+							<li class="fragment">Determines the appropriate view/controller/model for that route/URL</li>
+							<li class="fragment">Replaces the old view with the new view</li>
+							<li class="fragment">Rinse, lather, repeat</li>
+						</ol>
+
+						<br><br>
+
+						<p class="fragment">So our file/folder structure is not tied to our URLs...</p>
+						<h1 class="fragment">structured flexibility</h1>
+					</section>
+
+					<section data-background="http://getparsinger.com/images/slide-5.jpg">
+						<h1>How is this
+						<br>achieved
+						<br>in our code?</h1>
+
+						<small>*this background is misleading
+						<br>&amp; I have no idea what it means</small>
+					</section>
+
+					<section>
+						<img src="photos/files-normal.png" style="width: 67%;">
+					</section>
+
+					<section>
+						<img src="photos/files-highlighted.png" style="width: 67%;">
+					</section>
+
+					<section>
+						<img src="photos/files-highlighted-pub-ed.png" style="width: 67%;">
+					</section>
+
+					<section>
+						<h2>index.html</h2>
+
+						<pre><code>
+&#8249;html ng-app="coastal"&#8250;
+    &#8249;head&#8250;
+        <!-- meta -->
+        <!-- css -->
+    &#8249;/head&#8250;
+
+    &#8249;body&#8250;
+        <!-- navigation -->
+
+        <div ng-view></div>
+
+        <!-- js -->
+    &#8249;/body&#8250;
+&#8249;/html&#8250;
+						</code></pre>
+
+						<p>Textbook stuff</p>
+					</section>
+
+					<section>
+						<h2>coastal.js</h2>
+
+						<pre><code>
+angular.module('coastal', [
+	// global dependencies
+	'ngRoute',
+
+	// pages
+	'coastal.home',
+	...
+])
+
+// redirect to /home if attempted route does not exist
+.config(['$routeProvider', function($routeProvider) {
+	$routeProvider.otherwise({redirectTo: '/home'});
+}]);
+						</code></pre>
+
+						<p class="fragment">Global/application module that ties most everything together</p>
+
+						<p class="fragment">We only need touch this file if we add a new page or module</p>
+					</section>
+
+					<section>
+						<h2>home.js</h2>
+
+						<pre><code>
+angular.module('coastal.home', ['ngRoute'])
+
+.config(['$routeProvider', function($routeProvider) {
+    $routeProvider.when('/home', {
+        templateUrl: 'pages/home/home.html',
+        controller: 'HomeCtrl'
+    });
+}])
+
+.controller('HomeCtrl', [function() {
+    ...
+}]);
+						</code></pre>
+
+						<p class="fragment">We only need touch this file if we add logic to the home page/view</p>
+					</section>
+
+					<section>
+						<h2>home.html</h2>
+
+						<pre><code>
+<any>
+    <markup>
+        <content>
+            ...
+        </content>
+    </markup>
+</any>
+						</code></pre>
+
+						<p class="fragment">Nothing new here</p>
+
+						<p class="fragment">We only need touch this file if add or update content to the home page/view</p>
+					</section>
+				</section>
+
+				<section>
+					<!-- <section data-background="http://venturebeat.files.wordpress.com/2013/02/crash-computer.jpg?w=780&h=9999&crop=0"> -->
+					<section data-background="http://www.maintenancephoenix.com/wp-content/uploads/2014/06/how-pit-crews-work-in-motorsport-14225_2.jpg">
+						<h2 style="color:#ff9800">Ng-Coastal</h2>
+						<h1 style="color:#ff9800">#2 Ease of Maintenance</h1>
+					</section>
+
+					<section>
+						<h2>Want to edit an existing page's content?</h2>
+
+						<p class="fragment">it's the same process as today, except easier to locate because our file/folder structure mirrors our navigation</p>
+					</section>
+
+					<section>
+						<h2>Want to add a new page?</h2>
+
+						<ol>
+							<li class="fragment">create a new folder under /pages where the page will live in the global nav</li>
+							<li class="fragment" style="color:#e91e63">create 2 new files...new-page.html &amp; new-page.js</li>
+							<li class="fragment">link to the new-page.js file within /index.html</li>
+							<li class="fragment" style="color:#e91e63">copy &amp; paste the boilerplate JS into new-page.js</li>
+							<li class="fragment" style="color:#e91e63">add the coastal.new-page module as a dependency in coastal.js</li>
+							<li class="fragment">add the new-page to the global nav in index.html</li>
+							<li class="fragment">add your new-page HTML within /new-page.html</li>
+						</ol>
+
+						<br><br>
+						<p class="fragment">Only steps 2, 4 &amp; 5 are additions to our current process</p>
+					</section>
+				</section>
+
+				<section>
+					<section data-background="http://www.wired.com/images_blogs/thisdayintech/2010/03/tesla_f.jpg">
+						<h2 style="color:#b0120a">Ng-Coastal</h2>
+						<h1 style="color:#b0120a">#3 Data Driven Dynamic Content</h1>
+					</section>
+
+					<section>
+						<h1>Data Output</h1>
+
+						<ol style="font-size: 28px;">
+							<li class="fragment">We create a new module, I'll call it Data</li>
+							<li class="fragment"> Data is injected as a dependency of a home.js's controller like this
+								<pre><code>
+.controller('HomeCtrl', ['$scope', 'Data', function($scope, Data) { ... }]);
+								</code></pre>
+							</li>
+							<li class="fragment">Then we make the Data available to home.html in our home.js controller like this
+								<pre><code>
+$scope.data = Data;
+								</code></pre>
+							</li>
+							<li class="fragment">&amp; in home.html we can inject the data like this
+								<pre><code>
+<h3>{{ data }}</h3>
+								</code></pre>
+							</li>
+							<li class="fragment">Moreover, we can repeat many items like this
+								<pre><code>
+    <ol ng-repeate="item in data">
+        <li>{{ item }}</li>
+    </ol>
+								</code></pre>
+							</li>
+						</ol>
+					</section>
+
+					<section  ng-app>
+						<h1>Data Input</h1>
+						<label>Name:</label>
+					      <input type="text" ng-model="yourName" placeholder="Enter a name here">
+					      <hr>
+					      <h2>Hello <span style="color:#1de9b6">{{yourName}}</span></h2>
+					</section>
+
+					<section>
+						<h2>This approach is called
+						<br><span style="color:#e91e63">2-way data binding</span>
+						<br>&amp; it's in Angular's core</h2>
+						<pre><code>
+<label>Name:</label>
+<input type="text" ng-model="yourName" placeholder="Enter a name here">
+
+<hr>
+
+<h1>Hello {{ yourName }}</h1>
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section data-background="http://40.media.tumblr.com/291e561a88cd0c8af181723aed234541/tumblr_n6d97ie6yW1s9x3i1o5_1280.jpg">
+						<h2 style="color: #9c27b0">Ng-Coastal</h2>
+						<h1 style="color: #9c27b0">#4 Extensibility</h1>
+					</section>
+
+					<section>
+						<h1>Everything is a module</h1>
+						<p>We've already extended Angular with modules for each page &amp; for accessing our Data</p>
+						<p class="fragment">Beyond that, Angular has a HUGE developer community that regularly Open Sources 3rd party modules</p>
+
+						<a href="http://ngmodules.org/" class="fragment" target="_blank">
+							NG-Modules.org
+						</a>
+					</section>
+				</section>
+
+				<section>
+					<section data-background="http://static.sportskeeda.com/wp-content/uploads/2014/07/usain-bolt-celebrates-007-1406547223.jpg">
+						<h2 style="color: #eeff41">Ng-Coastal</h2>
+						<h1 style="color: #eeff41">#5 High Performance</h1>
+					</section>
+
+					<section>
+						<h1>AngularJS
+						<br>applications
+						<br>are <span style="color: #8bc34a">fast</span></h1>
+
+						<h2 class="fragment">...faster than Usan Bolt</h2>
+
+						<h3 class="fragment"><a href="http://testweb/ng-coastal/">DEMO</a></h3>
+					</section>
+
+
+					<section>
+						<!-- <h1>To grok <span style="color: #8bc34a">fast</span>
+						<br>you must first
+						<br>grok <span style="color: #b0120a">slow</span></h1> -->
+
+						<h1>What we can <span style="color: #eeff41">measure</span>
+						<br>We can <span style="color: #8bc34a">optimize</span></h1>
+
+						<h3 class="fragment">AKA How things are today</h3>
+
+						<ol>
+							<li class="fragment">A visitor navigates to our homepage</li>
+							<li class="fragment">100% of the resources are retrieved from the server</li>
+							<li class="fragment">The visitor navigates to another page</li>
+							<li class="fragment"><strong style="color:#b0120a">100%</strong> of the resources are retrieved from the server, even if we just had some of them</li>
+							<li class="fragment">Rinse, lather, repeat</li>
+						</ol>
+					</section>
+
+					<section>
+						<h2>How Angular handles resources</h2>
+
+						<ol>
+							<li class="fragment">A visitor navigates to our homepage</li>
+							<li class="fragment">100% of the resources are retrieved from the server</li>
+							<li class="fragment">The visitor navigates to another page</li>
+							<li class="fragment">Rinse, lather, repeat</li>
+						</ol>
+
+						<h1 class="fragment">Only <span style="color: #8bc34a">new</span> resources
+						<br>are retrieved
+						<br>from the server</h1>
+					</section>
+
+					<section data-background="http://www.html5rocks.com/static/images/screenshots/crossdevice/image16.gif">
+						<h5>Aside from speed...</h5>
+						<h1 class="fragment">Saving resources
+						<br>is a big deal
+						<br>in the context of
+						<br>mobile data plans/caps</h1>
+					</section>
+				</section>
+			</div> <!-- end .slides -->
+		</div> <!-- end .reveal -->
+
+		<!-- js -->
+		<script src="reveal.js/lib/js/head.min.js"></script>
+		<script src="reveal.js/js/reveal.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+	</body>
+</html>
